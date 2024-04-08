@@ -26,7 +26,7 @@ Card createCardFunc(int i, int j) {
 	Card card;
 	card.suit = i;
 	card.value = j;
-	char valueChar[2];
+	char valueChar[3];
 	switch (card.suit) {
 	case 0:
 		strcpy(card.suitName, "Hearts");
