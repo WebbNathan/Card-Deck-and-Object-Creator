@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-typedef struct Card_strict {
+typedef struct Card_struct {
 	int suit;
 	int value;
 	char suitName[9];
@@ -17,7 +17,7 @@ int main() {
 	createDeckFunc(deckList);
 	for (int i = 0; i < 52; i++) {
 		//printf("%d %d\n", deckList[i].suit, deckList[i].value);
-		printf("%s of %s\n", deckList[i].valueName, deckList[i].suitName);
+		printf("%s of %s, ", deckList[i].valueName, deckList[i].suitName);
 	}
 	return 0;
 }
@@ -42,24 +42,24 @@ Card createCardFunc(int i, int j) {
 		break;
 	}
 
-	if (card.value == 0 || card.value > 9) {
+	if (card.value == 1 || card.value > 10) {
 		switch (card.value) {
-		case 0:
+		case 1:
 			strcpy(card.valueName, "Ace\0");
 			break;
-		case 10:
+		case 11:
 			strcpy(card.valueName, "Jack\0");
 			break;
-		case 11:
+		case 12:
 			strcpy(card.valueName, "Queen\0");
 			break;
-		case 12:
+		case 13:
 			strcpy(card.valueName, "King\0");
 			break;
 		}
 	}
 	else {
-		sprintf(valueChar, "%d", card.value + 1);
+		sprintf(valueChar, "%d", card.value);
 		strcpy(card.valueName, valueChar);
 	}
 	return card;
@@ -69,7 +69,7 @@ void createDeckFunc(Card deckList[52]) {
 	int cardIter = 0;
 
 	for (int i = 0; i < 4; i++) {
-		for (int j = 0; j < 13; j++) {
+		for (int j = 1; j < 14; j++) {
 			deckList[cardIter] = createCardFunc(i, j);
 			cardIter++;
 		}
